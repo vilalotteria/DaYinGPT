@@ -71,7 +71,10 @@ Nothing is written to any remote storage.
 | Host access to the domains above | Fetch the conversation and its images |
 | `storage` | Remember your export preferences |
 | `unlimitedStorage` | Hold the temporary document above — a long conversation with embedded images can exceed the default quota |
-| `downloads` | Give the exported file a meaningful filename. The extension only inspects downloads it started itself; every other download is passed through untouched |
+
+That is the complete list. In particular, the extension does **not** request access
+to your browsing history, your bookmarks, your downloads, or any site other than
+the ones named above. You can verify this at `chrome://extensions` → *Details*.
 
 ## Children
 
@@ -153,7 +156,9 @@ DaYin GPT 不收集、不传输、不存储、不出售任何个人数据。没�
 | 上表中域名的访问权 | 抓取对话及其图片 |
 | `storage` | 记住你的导出偏好 |
 | `unlimitedStorage` | 存放上面那份临时文档 —— 图片内嵌的长对话会超出默认配额 |
-| `downloads` | 给导出的文件一个像样的文件名。插件只查看**自己发起**的下载，其他下载一律原样放行 |
+
+以上就是全部。特别说明：插件**不**申请浏览历史、书签、下载记录的访问权，也不申请
+上面列出之外的任何站点。可以在 `chrome://extensions` →**详情**里自行核对。
 
 ## 未成年人
 
