@@ -37,6 +37,26 @@ The gear icon ⚙️ has two options: **embed images** and **PDF page numbers**.
 
 ## Known issues & FAQ
 
+### Why does exporting a PDF open the print dialog?
+
+Because that dialog *is* how the PDF gets made. The extension hands your formatted
+document to Chrome's own print pipeline and lets Chrome render the PDF — the same
+engine you get from Ctrl+P on any page. Nothing is uploaded and no PDF library is
+bundled.
+
+In the dialog, set **Destination** to **Save as PDF**, and tick **Background
+graphics** under *More settings* — without it, code blocks lose their shading.
+
+**Chrome cannot be told to preselect "Save as PDF".** There is no browser API that
+sets the print destination for a page, so the extension can't do it for you. The
+one workaround — driving Chrome's debugging interface to render the PDF without any
+dialog — requires the `debugger` permission, which this extension deliberately does
+not request: it would let the extension read and modify any page, and Chrome would
+show a "being debugged" banner on every export.
+
+The good news is that it's a one-time step. **Chrome remembers the destination you
+last used**, so after the first export the dialog already opens on *Save as PDF*.
+
 ### Long conversations with many images take a while
 
 With **embed images** on, every image is downloaded separately and converted to
@@ -139,6 +159,23 @@ Chrome 应用商店：*尚未上架*
 齿轮 ⚙️ 里有两个选项：**内嵌图片**和 **PDF 页码**。
 
 ## 已知问题与常见疑问
+
+### 为什么导出 PDF 会弹打印对话框？
+
+因为这个对话框**就是**生成 PDF 的方式。插件把排好版的文档交给 Chrome 自己的打印
+管线，由 Chrome 渲染成 PDF —— 和你在任意网页上按 Ctrl+P 用的是同一个引擎。不上传
+任何东西，也没有内置任何 PDF 库。
+
+在对话框里把**目标打印机**选成**另存为 PDF**，并在**更多设置**里勾上**背景图形**
+—— 不勾的话代码块的底色会丢掉。
+
+**没有办法让 Chrome 预先选好"另存为 PDF"。** 浏览器不提供任何设置打印目标的接口，
+插件替你选不了。唯一能绕开的办法是调用 Chrome 的调试接口直接渲染 PDF，那需要
+`debugger` 权限 —— 本插件**特意不申请**：它意味着可以读写任意网页，而且每次导出
+Chrome 都会挂出"正在调试此浏览器"的横幅。
+
+好在这是一次性的：**Chrome 会记住你上次选的目标**，第一次选过之后，以后打开对话框
+就已经停在"另存为 PDF"上了。
 
 ### 图片多的长对话导出很慢
 
