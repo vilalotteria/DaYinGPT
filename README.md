@@ -1,5 +1,9 @@
 # DaYin GPT
 
+> **Status: being prepared for submission to the Chrome Web Store.** The install
+> link will be added here once it's live. This repository is already open so that
+> issues can be filed.
+
 Export ChatGPT conversations to **PDF / HTML / Markdown**, picking exactly which
 messages to include, with the page's original formatting preserved — code blocks
 with syntax highlighting, tables, nested lists, quotes and images.
@@ -16,7 +20,7 @@ uploaded anywhere.** See [PRIVACY.md](PRIVACY.md).
 ## Install
 
 <!-- TODO: 上架后把下面这行换成商店链接 -->
-Chrome Web Store: *not published yet*
+Chrome Web Store: *not listed yet — link coming once it's live*
 
 After installing, **pin the extension to your toolbar** — otherwise you have to
 dig it out of the puzzle-piece menu every time.
@@ -30,32 +34,39 @@ dig it out of the puzzle-piece menu every time.
    None / Invert*
 4. Edit the title if you like, pick a format, click **Export**
 
-For **PDF**, Chrome's print dialog opens. Under *Destination*, choose
-**Save as PDF**.
+Picking **PDF** opens Chrome's print dialog — from there you can send it to a
+printer or choose **Save as PDF**. Either way, tick **Background graphics**.
 
 The gear icon ⚙️ has two options: **embed images** and **PDF page numbers**.
 
 ## Known issues & FAQ
 
-### Why does exporting a PDF open the print dialog?
+### Print it, or save it as a PDF — the dialog does both
 
-Because that dialog *is* how the PDF gets made. The extension hands your formatted
-document to Chrome's own print pipeline and lets Chrome render the PDF — the same
-engine you get from Ctrl+P on any page. Nothing is uploaded and no PDF library is
-bundled.
+*DaYin* (打印) is Chinese for *print*, and that is the point of this extension:
+turning a conversation into something you can actually put on paper or file away.
 
-In the dialog, set **Destination** to **Save as PDF**, and tick **Background
-graphics** under *More settings* — without it, code blocks lose their shading.
+Choosing **PDF** opens Chrome's print dialog, and from there you pick either path:
 
-**Chrome cannot be told to preselect "Save as PDF".** There is no browser API that
-sets the print destination for a page, so the extension can't do it for you. The
-one workaround — driving Chrome's debugging interface to render the PDF without any
-dialog — requires the `debugger` permission, which this extension deliberately does
-not request: it would let the extension read and modify any page, and Chrome would
+- **Select a printer** → the conversation is printed
+- **Select "Save as PDF"** → it's written to a file
+
+Both are intended uses. The document is rendered by Chrome's own print engine —
+the same one behind Ctrl+P on any page — so nothing is uploaded and no PDF library
+is bundled.
+
+**Tick "Background graphics"** under *More settings*. Without it, code blocks lose
+their shading, which is most of what makes the export look like the page.
+
+One caveat: **Chrome can't be told which destination to preselect.** No browser API
+sets the print destination for a page, so the extension can't choose for you. The
+only way around it — driving Chrome's debugging interface to render the PDF with no
+dialog at all — needs the `debugger` permission, which this extension deliberately
+does not request: it would allow reading and modifying any page, and Chrome would
 show a "being debugged" banner on every export.
 
-The good news is that it's a one-time step. **Chrome remembers the destination you
-last used**, so after the first export the dialog already opens on *Save as PDF*.
+In practice it's a one-time step, since **Chrome remembers the destination you used
+last**.
 
 ### Long conversations with many images take a while
 
@@ -97,6 +108,28 @@ the exported file.
 
 Canvas documents, and the citation superscripts in Deep Research answers.
 
+### It worked yesterday and today it doesn't
+
+Most likely ChatGPT changed something on their end.
+
+This extension reads your conversation through the same internal interface the
+ChatGPT web app uses on itself. That interface isn't a published, stable API —
+OpenAI can change it at any time, without notice, and when they do, an extension
+built on it can stop working overnight. Every ChatGPT exporter has this problem;
+it isn't something that can be engineered away.
+
+What to do:
+
+1. **Check for an extension update first.** `chrome://extensions` → turn on
+   *Developer mode* → *Update*. If a fix is already out, this is the fastest path.
+2. If it's still broken, [open an issue](https://github.com/vilalotteria/DaYinGPT/issues)
+   and say **what you saw** — nothing exported at all, some messages missing,
+   images broken, the Export button gone — plus your Chrome version. That
+   distinction is what points at the cause.
+
+Exports you've already saved are plain PDF, HTML, or Markdown files on your own
+computer. They keep working no matter what happens to the extension or to ChatGPT.
+
 ### Markdown export says it can't find the source
 
 Markdown export needs ChatGPT's own backend response. If that request fails, the
@@ -131,6 +164,9 @@ specific content, say so and I'll work out another way to look at it.
 
 # 中文说明
 
+> **状态：正在准备上架 Chrome 应用商店。** 上架后会把安装链接补在这里。
+> 仓库先公开，是为了可以提 issue。
+
 把 ChatGPT 网页对话导出成 **PDF / HTML / Markdown**，可以逐条挑选要导出哪些消息，
 排版尽量贴近网页所见 —— 代码块（含语法高亮）、表格、嵌套列表、引用、图片都保留。
 
@@ -143,7 +179,7 @@ specific content, say so and I'll work out another way to look at it.
 ## 安装
 
 <!-- TODO: 上架后把下面这行换成商店链接 -->
-Chrome 应用商店：*尚未上架*
+Chrome 应用商店：*尚未上架，上线后补上链接*
 
 装好后建议**把插件固定到工具栏**，否则每次都要去拼图图标里翻。
 
@@ -154,28 +190,34 @@ Chrome 应用商店：*尚未上架*
 3. 勾选要导出的消息，上面有**全部 / 提问 / 回答 / 无 / 反选**几个快捷键
 4. 需要的话改一下标题，选格式，点**导出**
 
-导出 **PDF** 时会弹出 Chrome 的打印对话框，在**目标打印机**里选**另存为 PDF**。
+选 **PDF** 会弹出 Chrome 的打印对话框 —— 可以直接选打印机打印，也可以选**另存为
+PDF** 存成文件。两种都记得勾上**背景图形**。
 
 齿轮 ⚙️ 里有两个选项：**内嵌图片**和 **PDF 页码**。
 
 ## 已知问题与常见疑问
 
-### 为什么导出 PDF 会弹打印对话框？
+### 可以直接打印，也可以存成 PDF
 
-因为这个对话框**就是**生成 PDF 的方式。插件把排好版的文档交给 Chrome 自己的打印
-管线，由 Chrome 渲染成 PDF —— 和你在任意网页上按 Ctrl+P 用的是同一个引擎。不上传
-任何东西，也没有内置任何 PDF 库。
+**大印**就是打印 —— 这个插件的落点就是把对话变成能真正打出来、能归档的东西。
 
-在对话框里把**目标打印机**选成**另存为 PDF**，并在**更多设置**里勾上**背景图形**
-—— 不勾的话代码块的底色会丢掉。
+选 **PDF** 会弹出 Chrome 的打印对话框，从那里走哪条都行：
 
-**没有办法让 Chrome 预先选好"另存为 PDF"。** 浏览器不提供任何设置打印目标的接口，
-插件替你选不了。唯一能绕开的办法是调用 Chrome 的调试接口直接渲染 PDF，那需要
+- **选一台打印机** → 直接把对话打印出来
+- **选「另存为 PDF」** → 存成文件
+
+两条都是正常用法。文档由 Chrome 自己的打印引擎渲染 —— 和你在任意网页上按 Ctrl+P
+是同一个引擎 —— 所以不上传任何东西，也没有内置任何 PDF 库。
+
+**记得在「更多设置」里勾上「背景图形」。** 不勾的话代码块的底色会全部丢掉，而那
+正是「看起来像网页原样」的主要来源。
+
+一个限制：**没法让 Chrome 预先选好某个目标。** 浏览器不提供设置打印目标的接口，
+插件替你选不了。唯一能绕开的办法是调用 Chrome 的调试接口直接渲染，那需要
 `debugger` 权限 —— 本插件**特意不申请**：它意味着可以读写任意网页，而且每次导出
-Chrome 都会挂出"正在调试此浏览器"的横幅。
+Chrome 都会挂出「正在调试此浏览器」的横幅。
 
-好在这是一次性的：**Chrome 会记住你上次选的目标**，第一次选过之后，以后打开对话框
-就已经停在"另存为 PDF"上了。
+实际上这是一次性的，因为 **Chrome 会记住你上次选的目标**。
 
 ### 图片多的长对话导出很慢
 
@@ -211,6 +253,25 @@ DaYin GPT 不参与文件名的争夺 —— 多个扩展同时想给一个下�
 ### 不支持的内容
 
 Canvas 画布，以及深度研究回答里的引用角标。
+
+### 昨天还能用，今天不行了
+
+多半是 ChatGPT 那边改了东西。
+
+这个插件读对话，用的是 ChatGPT 网页版**对自己用的那套内部接口**。它不是公开的、
+有稳定性承诺的 API —— OpenAI 随时可以改，改了也不会有通知，一改插件就可能一夜之间
+失效。所有做 ChatGPT 导出的插件都有这个问题，**这不是靠把代码写得更结实能消除的**。
+
+怎么办：
+
+1. **先看有没有插件更新。** `chrome://extensions` → 打开**开发者模式** →
+   点**更新**。如果修复已经发出来了，这是最快的路
+2. 还是不行就[提个 issue](https://github.com/vilalotteria/DaYinGPT/issues)，说清楚
+   **你看到的现象** —— 完全导不出来、少了一部分消息、图片裂了、还是导出按钮直接
+   不见了 —— 再带上 Chrome 版本。这个区分正是定位原因的关键
+
+已经存下来的文件是普通的 PDF / HTML / Markdown，就在你自己电脑上。**无论插件还是
+ChatGPT 之后发生什么，它们都照常能打开。**
 
 ### 导出 Markdown 时提示找不到源码
 
