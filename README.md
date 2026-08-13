@@ -1,8 +1,8 @@
 # DaYin GPT
 
-> **Status: submitted to the Chrome Web Store, waiting on review.** The install
-> link will be added here once it's approved. This repository is already open so
-> that issues can be filed.
+> **Status: being prepared for submission to the Chrome Web Store.** The install
+> link will be added here once it's live. This repository is already open so that
+> issues can be filed.
 
 Export ChatGPT conversations to **PDF / HTML / Markdown**, picking exactly which
 messages to include, with the page's original formatting preserved — code blocks
@@ -20,7 +20,7 @@ uploaded anywhere.** See [PRIVACY.md](PRIVACY.md).
 ## Install
 
 <!-- TODO: 上架后把下面这行换成商店链接 -->
-Chrome Web Store: *pending review — link coming once approved*
+Chrome Web Store: *not listed yet — link coming once it's live*
 
 After installing, **pin the extension to your toolbar** — otherwise you have to
 dig it out of the puzzle-piece menu every time.
@@ -164,8 +164,8 @@ specific content, say so and I'll work out another way to look at it.
 
 # 中文说明
 
-> **状态：已提交 Chrome 应用商店，正在等待审核上架。** 通过后会把安装链接补在
-> 这里。仓库先公开，是为了可以提 issue。
+> **状态：正在准备上架 Chrome 应用商店。** 上架后会把安装链接补在这里。
+> 仓库先公开，是为了可以提 issue。
 
 把 ChatGPT 网页对话导出成 **PDF / HTML / Markdown**，可以逐条挑选要导出哪些消息，
 排版尽量贴近网页所见 —— 代码块（含语法高亮）、表格、嵌套列表、引用、图片都保留。
@@ -179,7 +179,7 @@ specific content, say so and I'll work out another way to look at it.
 ## 安装
 
 <!-- TODO: 上架后把下面这行换成商店链接 -->
-Chrome 应用商店：*审核中，通过后补上链接*
+Chrome 应用商店：*尚未上架，上线后补上链接*
 
 装好后建议**把插件固定到工具栏**，否则每次都要去拼图图标里翻。
 
