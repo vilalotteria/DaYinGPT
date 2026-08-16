@@ -1,6 +1,6 @@
 # Privacy Policy — DaYin GPT
 
-**Last updated: 2026-08-09**
+**Last updated: 2026-08-15**
 
 [中文版见下 ↓](#隐私政策--dayin-gpt)
 
@@ -13,7 +13,7 @@ to your own computer.
 
 ## What the extension accesses
 
-When — and only when — you click **Export** on a ChatGPT page, the extension reads
+When — and only when — you click **Print / Export** on a ChatGPT page, the extension reads
 the content of that conversation: the message text, its formatting, and any images
 in it.
 
@@ -42,7 +42,7 @@ belonging to OpenAI:
 | Destination | Why |
 |---|---|
 | `chatgpt.com`, `chat.openai.com` | Read the conversation you asked to export |
-| `*.oaiusercontent.com`, `*.oaistatic.com` | Download images in that conversation, when *embed images* is enabled |
+| `*.oaiusercontent.com`, `*.oaistatic.com` | Download images in that conversation, so they can be stored inside the exported file |
 
 These are declared in the extension's `manifest.json` as `host_permissions`, which
 is the complete and enforceable whitelist — Chrome will not let the extension reach
@@ -54,8 +54,8 @@ No requests are made to any domain owned by the author.
 
 The extension uses Chrome's local extension storage for two things:
 
-1. **Your preferences** (whether to embed images, whether to number PDF pages).
-   These never leave your device.
+1. **Your preferences** (whether to number PDF pages). These never leave your
+   device.
 2. **A temporary copy of the document being exported**, when a file is too large to
    pass between extension components directly. It is deleted as soon as the export
    finishes, and any leftovers from an interrupted export are cleared the next time
@@ -67,7 +67,7 @@ Nothing is written to any remote storage.
 
 | Permission | Why |
 |---|---|
-| `activeTab` | Read the conversation on the ChatGPT tab you are currently looking at, at the moment you click Export |
+| `activeTab` | Read the conversation on the ChatGPT tab you are currently looking at, at the moment you click Print / Export |
 | Host access to the domains above | Fetch the conversation and its images |
 | `storage` | Remember your export preferences |
 | `unlimitedStorage` | Hold the temporary document above — a long conversation with embedded images can exceed the default quota |
@@ -96,7 +96,7 @@ Questions about this policy, or about anything the extension does, are welcome a
 
 # 隐私政策 — DaYin GPT
 
-**最后更新：2026-08-09**
+**最后更新：2026-08-15**
 
 ## 一句话概括
 
@@ -106,7 +106,7 @@ DaYin GPT 不收集、不传输、不存储、不出售任何个人数据。没�
 
 ## 插件会读取什么
 
-**只有**在你于 ChatGPT 页面上点击**导出**时，插件才会读取该对话的内容：消息文字、
+**只有**在你于 ChatGPT 页面上点击**打印 / 导出**时，插件才会读取该对话的内容：消息文字、
 排版，以及其中的图片。
 
 读取方式是调用 ChatGPT **自己的内部接口**（`/backend-api/conversation/…`）—— 就是
@@ -129,7 +129,7 @@ DaYin GPT 不收集、不传输、不存储、不出售任何个人数据。没�
 | 目标 | 用途 |
 |---|---|
 | `chatgpt.com`、`chat.openai.com` | 读取你要导出的那个对话 |
-| `*.oaiusercontent.com`、`*.oaistatic.com` | 开启**内嵌图片**时下载对话里的图片 |
+| `*.oaiusercontent.com`、`*.oaistatic.com` | 下载对话里的图片，好把它们存进导出的文件 |
 
 这些写在插件 `manifest.json` 的 `host_permissions` 里，是完整且由浏览器强制执行的
 白名单 —— Chrome 不会允许插件访问名单外的任何主机。你可以在 `chrome://extensions`
@@ -141,7 +141,7 @@ DaYin GPT 不收集、不传输、不存储、不出售任何个人数据。没�
 
 插件使用 Chrome 的本地扩展存储，只存两样东西：
 
-1. **你的偏好设置**（是否内嵌图片、PDF 是否加页码）。这些不会离开你的设备
+1. **你的偏好设置**（PDF 是否加页码）。这些不会离开你的设备
 2. **正在导出的文档的临时副本** —— 文件太大、无法在扩展内部各组件之间直接传递时
    会先落到本地。导出一结束就删除；如果导出被中断留下了残留，下次浏览器启动时会
    自动清理
@@ -155,7 +155,7 @@ DaYin GPT 不收集、不传输、不存储、不出售任何个人数据。没�
 | `activeTab` | 在你点导出的那一刻，读取你当前正在看的那个 ChatGPT 标签页里的对话 |
 | 上表中域名的访问权 | 抓取对话及其图片 |
 | `storage` | 记住你的导出偏好 |
-| `unlimitedStorage` | 存放上面那份临时文档 —— 图片内嵌的长对话会超出默认配额 |
+| `unlimitedStorage` | 存放上面那份临时文档 —— 图片内嵌后的长对话会超出默认配额 |
 
 以上就是全部。特别说明：插件**不**申请浏览历史、书签、下载记录的访问权，也不申请
 上面列出之外的任何站点。可以在 `chrome://extensions` →**详情**里自行核对。

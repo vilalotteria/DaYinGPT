@@ -28,16 +28,18 @@ dig it out of the puzzle-piece menu every time.
 ## How to use
 
 1. Open any ChatGPT conversation
-2. Click the **Export** button at the bottom-right of the page (or the toolbar
-   icon → **Select & Export**)
-3. Tick the messages you want. There are shortcuts for *All / Prompts / Answers /
-   None / Invert*
-4. Edit the title if you like, pick a format, click **Export**
+2. Click the **Print / Export** button at the bottom-right of the page (or the
+   toolbar icon → **Select & Export**)
+3. Tick the messages you want. There are shortcuts for *All / Answers only / Invert*
+4. Edit the title if you like, pick a format, click **Print / Export**
 
 Picking **PDF** opens Chrome's print dialog — from there you can send it to a
 printer or choose **Save as PDF**. Either way, tick **Background graphics**.
 
-The gear icon ⚙️ has two options: **embed images** and **PDF page numbers**.
+Picking **HTML** or **Markdown** opens a save dialog, so you choose the filename
+and folder yourself.
+
+The gear icon ⚙️ has one option: **PDF page numbers**.
 
 ## Known issues & FAQ
 
@@ -70,28 +72,28 @@ last**.
 
 ### Long conversations with many images take a while
 
-With **embed images** on, every image is downloaded separately and converted to
-base64 so it lives inside the file. A conversation with dozens of images can take
-tens of seconds, and the result can be tens of megabytes.
+Every image is downloaded separately and converted to base64 so that it lives
+*inside* the exported file. A conversation with dozens of images can take tens of
+seconds, and the result can be tens of megabytes.
 
 The progress bar shows `Processing images x/y` — it isn't frozen, just working.
 
-**If you want it fast:** turn off *embed images* in the gear menu. Export finishes
-almost instantly and the file stays small, but images are then referenced by URL —
-and ChatGPT's image URLs expire, so after a while you'll see broken images. For
-anything you want to keep, leave embedding on and wait.
+**There is no way to turn this off, on purpose.** ChatGPT's image URLs are signed
+and expire, so an export that only references them looks fine today and is full of
+broken images a while later. Making that a checkbox would mean asking you to decide
+based on something you have no way of knowing. The wait buys you a file that still
+works in a year.
 
-### The exported file gets a garbled name, or the download is taken over
+### A Markdown viewer shows the code blocks as plain text
 
-HTML and Markdown exports use a normal browser download. If you have a download
-manager extension installed (IDM, Chrono, Thunder, etc.), it can intercept the
-download and rename the file to a random string.
+Some Markdown readers don't support fenced code blocks (the ``` kind) out of the
+box — Calibre's viewer, for instance, has that extension switched off by default.
+The result is that code runs together into one paragraph.
 
-DaYin GPT does not fight over the filename — when several extensions want to name
-the same download, Chrome's rule is that the most recently installed one wins.
-
-**Workarounds:** temporarily disable the download manager before exporting, or add
-`chatgpt.com` to its exclusion list.
+The exported file is fine; the reader just isn't reading it fully. Either enable
+the `fenced_code` extension in that reader, or **export HTML instead** — for
+reading rather than editing, HTML keeps the formatting exactly and needs no
+extensions.
 
 ### Images end up at the bottom of a message
 
@@ -124,7 +126,7 @@ What to do:
    *Developer mode* → *Update*. If a fix is already out, this is the fastest path.
 2. If it's still broken, [open an issue](https://github.com/vilalotteria/DaYinGPT/issues)
    and say **what you saw** — nothing exported at all, some messages missing,
-   images broken, the Export button gone — plus your Chrome version. That
+   images broken, the Print / Export button gone — plus your Chrome version. That
    distinction is what points at the cause.
 
 Exports you've already saved are plain PDF, HTML, or Markdown files on your own
@@ -142,8 +144,8 @@ The extension reads your conversation using ChatGPT's **own internal API** — t
 same request your browser already makes when you open a past conversation — using
 your existing login. That request is read-only and **does not consume tokens or
 cost anything**. Nothing is sent to the author or to any third party; there is no
-server involved. The only outbound requests are image downloads from OpenAI's CDN
-when image embedding is on. Full details: [PRIVACY.md](PRIVACY.md).
+server involved. The only outbound requests are image downloads from OpenAI's CDN,
+so that images end up inside the file. Full details: [PRIVACY.md](PRIVACY.md).
 
 ## Reporting a bug
 
@@ -151,7 +153,6 @@ when image embedding is on. Full details: [PRIVACY.md](PRIVACY.md).
 
 - Chrome version and OS
 - Which format you exported (PDF / HTML / Markdown)
-- Whether *embed images* was on
 - What you expected vs. what you got
 
 **Please don't paste conversation content into a public issue.** A screenshot with
@@ -186,14 +187,16 @@ Chrome 应用商店：*尚未上架，上线后补上链接*
 ## 怎么用
 
 1. 打开任意一个 ChatGPT 对话
-2. 点页面右下角的**导出**按钮（或点工具栏图标 →**选择并导出**）
-3. 勾选要导出的消息，上面有**全部 / 提问 / 回答 / 无 / 反选**几个快捷键
-4. 需要的话改一下标题，选格式，点**导出**
+2. 点页面右下角的**打印 / 导出**按钮（或点工具栏图标 →**选择并导出**）
+3. 勾选要导出的消息，上面有**全部 / 仅回答 / 反选**三个快捷键
+4. 需要的话改一下标题，选格式，点**打印 / 导出**
 
 选 **PDF** 会弹出 Chrome 的打印对话框 —— 可以直接选打印机打印，也可以选**另存为
 PDF** 存成文件。两种都记得勾上**背景图形**。
 
-齿轮 ⚙️ 里有两个选项：**内嵌图片**和 **PDF 页码**。
+选 **HTML** 或 **Markdown** 会弹出保存对话框，文件名和位置由你自己定。
+
+齿轮 ⚙️ 里只有一个选项：**PDF 页码**。
 
 ## 已知问题与常见疑问
 
@@ -221,25 +224,23 @@ Chrome 都会挂出「正在调试此浏览器」的横幅。
 
 ### 图片多的长对话导出很慢
 
-开着**内嵌图片**时，每张图都要单独下载再转成 base64 塞进文件里。几十张图的对话
-可能要等几十秒，生成的文件也可能有几十 MB。
+每张图都要单独下载再转成 base64 塞**进文件里**。几十张图的对话可能要等几十秒，
+生成的文件也可能有几十 MB。
 
 进度条上会显示`正在处理图片 x/y`，不是卡死了，是真在跑。
 
-**想快就关掉内嵌图片**（齿轮 ⚙️ 里）。导出几乎瞬间完成、文件也小，但图片会以链接
-形式引用 —— 而 ChatGPT 的图片链接会过期，过一阵再打开就是裂图。**要长期存档的
-文件，还是开着内嵌等一会儿。**
+**这个没有开关，是故意的。** ChatGPT 的图片地址是带签名、会过期的临时链接，只存
+链接的文件今天看着好好的，过一阵打开就是满屏裂图。把它做成一个勾选项，等于要你
+拿一个你无从知道的前提去做决定。多等这几十秒，换的是一份一年后还能打开的文件。
 
-### 导出的文件名变成乱码，或者下载被别的插件接管
+### 用某些 Markdown 阅读器打开，代码块变成了普通文字
 
-HTML 和 Markdown 导出走的是浏览器的普通下载。如果你装了下载管理器类扩展（IDM、
-Chrono、迅雷等），它可能会接管这个下载，把文件名换成一串随机字符。
+有些 Markdown 阅读器默认不支持围栏代码块（就是 ``` 那种）—— 比如 Calibre 的
+阅读器就默认关着这个扩展。结果就是代码全挤成一段。
 
-DaYin GPT 不参与文件名的争夺 —— 多个扩展同时想给一个下载命名时，Chrome 的规则是
-**最后安装的那个说了算**。
-
-**绕过办法**：导出前临时停用下载管理器；或者在它的设置里把 `chatgpt.com` 加进
-排除列表。
+**导出的文件本身没问题**，是阅读器没读全。要么在那个阅读器里打开 `fenced_code`
+扩展，要么**改导 HTML** —— 只是拿来读而不是再编辑的话，HTML 排版原样保留，
+也不依赖任何扩展。
 
 ### 图片都跑到消息末尾去了
 
@@ -284,7 +285,7 @@ PDF 和 HTML 不受影响。
 插件读对话用的是 ChatGPT 网页版**自己的内部接口** —— 就是你点开一个历史对话时
 浏览器本来就会发的那个请求 —— 用的是你当前的登录状态。这个请求是**纯读取**，
 **不消耗 token、不产生任何费用**。没有任何内容发给作者或第三方，整个过程不经过
-任何服务器。唯一的对外请求是开启图片内嵌时从 OpenAI 的 CDN 下载图片。
+任何服务器。唯一的对外请求是从 OpenAI 的 CDN 下载图片，好把它们存进导出的文件里。
 完整说明见 [PRIVACY.md](PRIVACY.md)。
 
 ## 反馈问题
@@ -293,7 +294,6 @@ PDF 和 HTML 不受影响。
 
 - Chrome 版本和操作系统
 - 导出的是哪种格式（PDF / HTML / Markdown）
-- 当时**内嵌图片**开着还是关着
 - 你期望的结果 vs 实际的结果
 
 **请不要把对话内容贴进公开 issue。** 打个码的截图就够了；如果某个问题只有特定内容
