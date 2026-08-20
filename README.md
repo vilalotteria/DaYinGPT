@@ -159,6 +159,12 @@ so that images end up inside the file. Full details: [PRIVACY.md](PRIVACY.md).
 the sensitive parts blacked out is enough — and if a bug only reproduces with
 specific content, say so and I'll work out another way to look at it.
 
+## Buy me a boba tea
+
+DaYin GPT is free and stays free — nothing is gated, and there is nothing to buy
+inside it. If it saved you some time,
+[you can buy me a boba tea](https://ko-fi.com/vilalotteria). Entirely optional.
+
 ---
 
 <a id="中文说明"></a>
@@ -298,3 +304,8 @@ PDF 和 HTML 不受影响。
 
 **请不要把对话内容贴进公开 issue。** 打个码的截图就够了；如果某个问题只有特定内容
 才能复现，说一声，我们再想别的办法看。
+
+## 请我喝杯奶茶
+
+这个插件是免费的，以后也是 —— 没有任何功能被锁住，插件里也没有任何可购买的东西。
+如果它帮你省了点时间，可以[请我喝杯奶茶](https://ko-fi.com/vilalotteria)，纯自愿。
