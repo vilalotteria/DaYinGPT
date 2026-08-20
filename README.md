@@ -1,8 +1,6 @@
 # DaYin GPT
 
-> **Status: being prepared for submission to the Chrome Web Store.** The install
-> link will be added here once it's live. This repository is already open so that
-> issues can be filed.
+> **[Install from the Chrome Web Store](https://chromewebstore.google.com/detail/jjcipikhabbpjbglfjcggapekpidlghk)**
 
 Export ChatGPT conversations to **PDF / HTML / Markdown**, picking exactly which
 messages to include, with the page's original formatting preserved — code blocks
@@ -19,8 +17,7 @@ uploaded anywhere.** See [PRIVACY.md](PRIVACY.md).
 
 ## Install
 
-<!-- TODO: 上架后把下面这行换成商店链接 -->
-Chrome Web Store: *not listed yet — link coming once it's live*
+[**Chrome Web Store**](https://chromewebstore.google.com/detail/jjcipikhabbpjbglfjcggapekpidlghk)
 
 After installing, **pin the extension to your toolbar** — otherwise you have to
 dig it out of the puzzle-piece menu every time.
@@ -159,14 +156,19 @@ so that images end up inside the file. Full details: [PRIVACY.md](PRIVACY.md).
 the sensitive parts blacked out is enough — and if a bug only reproduces with
 specific content, say so and I'll work out another way to look at it.
 
+## Buy me a boba tea
+
+DaYin GPT is free and stays free — nothing is gated, and there is nothing to buy
+inside it. If it saved you some time,
+[you can buy me a boba tea](https://ko-fi.com/vilalotteria). Entirely optional.
+
 ---
 
 <a id="中文说明"></a>
 
 # 中文说明
 
-> **状态：正在准备上架 Chrome 应用商店。** 上架后会把安装链接补在这里。
-> 仓库先公开，是为了可以提 issue。
+> **[从 Chrome 应用商店安装](https://chromewebstore.google.com/detail/jjcipikhabbpjbglfjcggapekpidlghk)**
 
 把 ChatGPT 网页对话导出成 **PDF / HTML / Markdown**，可以逐条挑选要导出哪些消息，
 排版尽量贴近网页所见 —— 代码块（含语法高亮）、表格、嵌套列表、引用、图片都保留。
@@ -179,8 +181,7 @@ specific content, say so and I'll work out another way to look at it.
 
 ## 安装
 
-<!-- TODO: 上架后把下面这行换成商店链接 -->
-Chrome 应用商店：*尚未上架，上线后补上链接*
+[**Chrome 应用商店**](https://chromewebstore.google.com/detail/jjcipikhabbpjbglfjcggapekpidlghk)
 
 装好后建议**把插件固定到工具栏**，否则每次都要去拼图图标里翻。
 
@@ -298,3 +299,8 @@ PDF 和 HTML 不受影响。
 
 **请不要把对话内容贴进公开 issue。** 打个码的截图就够了；如果某个问题只有特定内容
 才能复现，说一声，我们再想别的办法看。
+
+## 请我喝杯奶茶
+
+这个插件是免费的，以后也是 —— 没有任何功能被锁住，插件里也没有任何可购买的东西。
+如果它帮你省了点时间，可以[请我喝杯奶茶](https://ko-fi.com/vilalotteria)，纯自愿。
